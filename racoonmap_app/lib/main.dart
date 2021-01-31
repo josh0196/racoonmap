@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:racoonmap/core/models/place.dart';
 import 'package:racoonmap/core/services/geolocator_service.dart';
@@ -19,10 +20,16 @@ class RacoonMap extends StatelessWidget {
     return MultiProvider(
       providers: [
         FutureProvider(create: (context) => locatorService.getLocation()),
-        ProxyProvider<Position, Future<List<Place>>>(
-            update: (context, position, places) {
+        FutureProvider(
+          create: (context) => BitmapDescriptor.fromAssetImage(
+              createLocalImageConfiguration(context),
+              'assets/images/dumpster_icon.png'),
+        ),
+        ProxyProvider2<Position, BitmapDescriptor, Future<List<Place>>>(
+            update: (context, position, icon, places) {
           return (position != null)
-              ? placesService.getPlaces(position.latitude, position.longitude)
+              ? placesService.getPlaces(
+                  position.latitude, position.longitude, icon)
               : null;
         })
       ],
