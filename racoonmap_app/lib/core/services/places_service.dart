@@ -1,5 +1,5 @@
+import 'package:racoonmap/core/api/secrets.dart';
 import 'package:racoonmap/core/models/place.dart';
-import 'package:racoonmap/frontend/shared/util/secrets.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
 
