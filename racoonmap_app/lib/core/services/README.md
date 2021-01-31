@@ -1,0 +1,1 @@
+The *services* folder holds code that handle data extracted from an API, for instance auth.service.dart would be the service that handles the loginAPI.

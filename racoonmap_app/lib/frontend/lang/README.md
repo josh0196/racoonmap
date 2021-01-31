@@ -1,0 +1,1 @@
+The *lang* folder contains the different localization files for each supported language.

@@ -1,0 +1,1 @@
+The *API* folder includes all dart files that extract data from APIs.
